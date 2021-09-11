@@ -14,12 +14,14 @@ class Info(BaseModel):
 def read_root():
     return {"Message": "Hello Employee"}
 
+@app.post("/emp/")
+def create_item(info: Info):
+    return info
 
-@app.get("/emp/{emp_id}")
+@app.get("/emp/")
 def read_item(emp_id: int, remarks: Optional[str] = None):
     return {"emp_id": emp_id, "remarks": remarks}
 
-
-@app.put("/emp/{emp_id}")
-def update_item(emp_id: int, info: Info):
-    return {"emp_name": info.name, "emp_id": emp_id}
+@app.put("/emp/")
+def update_info(remarks: Optional[str] = None):
+    return {"updated_remarks": remarks}
